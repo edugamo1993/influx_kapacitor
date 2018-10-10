@@ -1,0 +1,23 @@
+var warn = lambda: FALSE
+var warnReset = lambda: FALSE
+var crit = lambda: FALSE
+var critReset = lambda: FALSE
+var field string
+var measurement string
+var window = 5m
+
+stream
+  |from()
+    .measurement(measurement)
+    .groupBy(*)
+  |window()
+        .period(10s)
+        .every(10s)
+  |alert()
+    .warn(warn)
+    .warnReset(warnReset)
+    .crit(crit)
+    .critReset(critReset)
+    .message('{"status": "{{ .Level}}", "reason" : "CPU is on fire !! :fire:  {{ index .Fields "'+ field  +'" }}% Free"}')
+    .log('/var/log/alerts.log')
+    .slack()

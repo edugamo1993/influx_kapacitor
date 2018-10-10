@@ -1,2 +1,4 @@
-influx/*
-kapacitor/*/
+influx/meta/
+influx/data/
+influx/wal/
+kapacitor/data/

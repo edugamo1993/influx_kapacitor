@@ -1,0 +1,8 @@
+{
+    "measurement": {"type" : "string", "value" : "cpu" },
+    "crit": {"type": "lambda", "value": "\"idle\" < 20"},
+    "critReset": {"type": "lambda",  "value": "\"idle\" > 20"},
+    "warn": {"type": "lambda",  "value": "\"idle\" < 30"},
+    "warnReset": {"type": "lambda",  "value": "\"idle\" > 30"},
+    "field": {"type" : "string", "value" : "idle" }
+}
