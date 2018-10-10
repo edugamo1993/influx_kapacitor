@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  influxdb:
+    container_name: influxdb 
+    image: influxdb
+    ports:
+      - 8086:8086
+    environment:
+      TERM: xterm
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./influx:/var/lib/influxdb:rw
+  kapacitor:
+    container_name: kapacitor
+    image: kapacitor
+    ports:
+      - 9092:9092
+    environment:
+      TERM: xterm
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./kapacitor/data:/var/lib/kapacitor:rw
+      - ./kapacitor/config:/etc/kapacitor:rw
